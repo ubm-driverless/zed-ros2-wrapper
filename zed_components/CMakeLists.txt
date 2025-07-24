@@ -107,6 +107,7 @@ set(DEPENDENCIES
     sensor_msgs
     stereo_msgs
     zed_msgs
+    vcu_srvs
     std_srvs
     diagnostic_msgs
     diagnostic_updater
@@ -120,6 +121,7 @@ find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
 find_package(rcutils REQUIRED)
+find_package(vcu_srvs REQUIRED)
 find_package(zed_msgs)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)

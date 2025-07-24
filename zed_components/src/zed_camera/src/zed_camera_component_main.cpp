@@ -173,6 +173,13 @@ void ZedCamera::init()
   }
   // <---- Start camera
 
+  // ----> IsReady service
+  // This service is used to let the others know when the ZED Camera is ready
+  mIsReadySrvName = declare_parameter("is_ready_service", "/zed_node/is_ready");
+  mIsReadySrv = create_service<vcu_srvs::srv::IsReady>(mIsReadySrvName,
+                                                       std::bind(&ZedCamera::callback_isReady, this, _1, _2));
+  // <---- IsReady service
+
   // Callback when the node is destroyed
   // This is used to stop the camera when the node is destroyed
   // and to stop the timers
@@ -8614,6 +8621,15 @@ void ZedCamera::callback_pubHeartbeat()
 
   // Publish the hearbeat
   mPubHeartbeatStatus->publish(std::move(msg));
+}
+
+void ZedCamera::callback_isReady(
+  const std::shared_ptr<vcu_srvs::srv::IsReady::Request> req,
+  std::shared_ptr<vcu_srvs::srv::IsReady::Response> res)
+{
+  (void)req;
+  res->success = true;
+  res->message = "ZED SDK node is ready.";
 }
 
 void ZedCamera::publishClock(const sl::Timestamp & ts)
