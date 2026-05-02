@@ -24,7 +24,7 @@
 #include "sl_types.hpp"
 #include "visibility_control.hpp"
 
-#include <vcu_srvs/srv/is_ready.hpp>
+#include <ubm_interfaces/srv/is_ready.hpp>
 
 namespace stereolabs
 {
@@ -1020,10 +1020,10 @@ private:
 
   // ----> IsReady service
   std::string mIsReadySrvName;
-  rclcpp::Service<vcu_srvs::srv::IsReady>::SharedPtr mIsReadySrv;
+  rclcpp::Service<ubm_interfaces::srv::IsReady>::SharedPtr mIsReadySrv;
   void callback_isReady(
-    const std::shared_ptr<vcu_srvs::srv::IsReady::Request> req,
-    std::shared_ptr<vcu_srvs::srv::IsReady::Response> res);
+    const std::shared_ptr<ubm_interfaces::srv::IsReady::Request> req,
+    std::shared_ptr<ubm_interfaces::srv::IsReady::Response> res);
   // <---- IsReady service
 };
 

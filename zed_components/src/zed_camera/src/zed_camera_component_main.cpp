@@ -176,7 +176,7 @@ void ZedCamera::init()
   // ----> IsReady service
   // This service is used to let the others know when the ZED Camera is ready
   mIsReadySrvName = declare_parameter("is_ready_service", "/zed_node/is_ready");
-  mIsReadySrv = create_service<vcu_srvs::srv::IsReady>(mIsReadySrvName,
+  mIsReadySrv = create_service<ubm_interfaces::srv::IsReady>(mIsReadySrvName,
                                                        std::bind(&ZedCamera::callback_isReady, this, _1, _2));
   // <---- IsReady service
 
@@ -8624,8 +8624,8 @@ void ZedCamera::callback_pubHeartbeat()
 }
 
 void ZedCamera::callback_isReady(
-  const std::shared_ptr<vcu_srvs::srv::IsReady::Request> req,
-  std::shared_ptr<vcu_srvs::srv::IsReady::Response> res)
+  const std::shared_ptr<ubm_interfaces::srv::IsReady::Request> req,
+  std::shared_ptr<ubm_interfaces::srv::IsReady::Response> res)
 {
   (void)req;
   res->success = true;
