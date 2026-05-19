@@ -47,7 +47,7 @@
 #include <sensor_msgs/msg/nav_sat_status.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include <sensor_msgs/msg/temperature.hpp>
-#include <std_msgs/msg/bool.hpp>
+#include "ubm_interfaces/msg/custom_bool.hpp"
 #include <std_srvs/srv/set_bool.hpp>
 #include <std_srvs/srv/trigger.hpp>
 #include <zed_msgs/srv/set_svo_frame.hpp>
@@ -152,7 +152,7 @@ typedef std::shared_ptr<rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>>
 typedef std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::NavSatFix>>
   gnssFixPub;
 
-typedef std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Bool>> healthPub;
+typedef std::shared_ptr<rclcpp::Publisher<ubm_interfaces::msg::CustomBool>> healthPub;
 
 typedef std::shared_ptr<rclcpp::Subscription<geometry_msgs::msg::PointStamped>> clickedPtSub;
 typedef std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::NavSatFix>> gnssFixSub;
