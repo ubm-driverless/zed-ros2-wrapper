@@ -5753,7 +5753,7 @@ void ZedCamera::publishPose()
 
   base_pose = mMap2BaseTransf;
 
-  std_msgs::msg::Header header;
+  ubm_interfaces::msg::CustomHeader header;
   header.stamp = mFrameTimestamp;
   header.frame_id = mMapFrameId;   // frame
 
@@ -5771,7 +5771,8 @@ void ZedCamera::publishPose()
   if (poseSub > 0) {
     auto poseNoCov = std::make_unique<geometry_msgs::msg::PoseStamped>();
 
-    poseNoCov->header = header;
+    poseNoCov->header.stamp = header.stamp;
+    poseNoCov->header.frame_id = header.frame_id;
     poseNoCov->pose = pose;
 
     // Publish pose stamped message
@@ -5789,7 +5790,8 @@ void ZedCamera::publishPose()
     if (poseCovSub > 0) {
       auto poseCov = std::make_unique<geometry_msgs::msg::PoseWithCovarianceStamped>();
 
-      poseCov->header = header;
+      poseCov->header.stamp = header.stamp;
+      poseCov->header.frame_id = header.frame_id;
       poseCov->pose.pose = pose;
 
       // Odometry pose covariance if available
